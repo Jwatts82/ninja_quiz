@@ -14,10 +14,21 @@ form.addEventListener('submit', e => {
             score += 25
         }
     })
+
     // show results on page
-    scrollTo(0, 0)
-    result.querySelector('span').textContent = `${score}%`
+    scrollTo(0,0)
+    result.querySelector('span').textContent = `${score}`
     result.classList.remove('d-none')
 
-    
+    let output = 0
+    const timer = setInterval(() => {
+        result.querySelector('span').textContent = `${output}%`
+        if(output === score){
+            clearInterval(timer)
+        } else {
+            output++
+        }
+
+    }, 20)
+
 })
